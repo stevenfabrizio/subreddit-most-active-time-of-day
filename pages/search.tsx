@@ -4,22 +4,19 @@ import { FormEvent } from 'react';
 const Search: NextPage = () => {
   const searchAPI = async () => {
     try {
-      console.log('img')
-
       const fetchAPI = await fetch(
         'http://www.reddit.com/r/pathofexile/new.json'
       );
+
       const res = await fetchAPI.json();
       const betterRes = res.data.children;
-
-      // console.log('got ere');
       console.log(betterRes);
 
       // const timeArr = []
       for (let i = 0; i < betterRes.length; i++) {
         const number = betterRes[i].data.created;
-        // let ts = new Date(number));
-        console.log(number);
+        const ddd = new Date(number * 1000).getHours();
+        console.log(ddd);
         // timeArr.push(betterRes[i].data.created)
       }
     } catch (error) {
